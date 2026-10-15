@@ -1,10 +1,14 @@
-# Mercacars · web
+# Desguaces.eu · ficha de Desguace Mercacars
 
-Web de una sola página para **Desguace Mercacars** (Valls, Tarragona): recambios de segunda mano, baja de vehículos (CAT) y contacto.
-
+Rediseño de la ficha https://www.desguaces.eu/desguace-595.html con el logo de Desguaces.eu.
 Abre `index.html` en el navegador; no necesita compilación.
 
-## Pendiente antes de publicar
-- Sustituir el texto `MERCACARS` de la cabecera por el logo oficial.
-- Confirmar horario, móvil (609 392 600) y email (catv@mercacars.com): salen de directorios y no coinciden del todo.
-- Añadir fotos reales del desguace (ahora las piezas son ilustraciones SVG).
+## Datos usados (de la ficha real)
+- Desguace Mercacars · Cra. de Valls a Barcelona, C-51 · 43800 Valls (Tarragona)
+- Teléfono: 977 604 947
+- Centro autorizado (CATV): baja de vehículos y recambios usados.
+
+## Pendiente
+- Email de destino del formulario de piezas: rellenar `CONTACT_EMAIL` en el script de `index.html`. Mientras esté vacío, el botón de email no aparece.
+- WhatsApp: sin añadir hasta confirmar número.
+- Fotos reales del desguace (si las hay).
