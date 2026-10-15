@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mercacars · Desguace en Valls (Tarragona)</title>
+<meta name="description" content="Desguace y Centro Autorizado de Tratamiento de vehículos en Valls (Tarragona). Recambios de segunda mano y baja de tu coche en la DGT. Tel. 977 604 947.">
+<meta name="theme-color" content="#ffd23f">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bone: #efefec;
+  --bone-2: #e2e1dc;
+  --ink: #16130f;
+  --ink-soft: #3b332b;
+  --yellow: #ffd23f;
+  --orange: #ff5a1f;
+  --cobalt: #1a43bf;
+  --sky: #a9c4ff;
+  --white: #ffffff;
+
+  --display: "Anton", "Arial Narrow", sans-serif;
+  --text: "Work Sans", system-ui, sans-serif;
+
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.75rem, 1.2rem + 5.6vw, 6rem);
+
+  --margin: clamp(16px, 2vw, 28px);
+  --radius: 14px;
+  --section: clamp(96px, 12vw, 180px);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scrollbar-color: var(--ink) var(--bone); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bone);
+  color: var(--ink);
+  font: 400 var(--step-body)/1.5 var(--text);
+  caret-color: var(--orange);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--ink); color: var(--yellow); }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--bone); }
+::-webkit-scrollbar-thumb { background: var(--ink); border: 3px solid var(--bone); border-radius: 99px; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 0.22em; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: -0.01em; line-height: 0.9; margin: 0; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+.wrap { padding-inline: var(--margin); }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6em;
+  font: 600 var(--step-body)/1 var(--text);
+  padding: 1em 1.4em;
+  border-radius: 999px;
+  border: 0;
+  background: var(--ink); color: var(--yellow);
+  text-decoration: none; cursor: pointer;
+  transition: transform 160ms var(--ease-out), background-color 180ms ease, color 180ms ease;
+}
+.btn:hover { background: var(--orange); color: var(--ink); }
+.btn:active { transform: scale(0.97); }
+.btn svg { width: 1.1em; height: 1.1em; }
+.btn--light { background: var(--bone); color: var(--ink); }
+.btn--light:hover { background: var(--yellow); }
+
+/* ---------- Header ---------- */
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 18px var(--margin);
+  position: relative; z-index: 2;
+}
+.brand { font: 400 1.75rem/1 var(--display); text-decoration: none; letter-spacing: 0.01em; }
+.brand img { height: 40px; width: auto; }
+.top nav { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 32px); font-weight: 600; }
+.top nav a:not(.btn) { text-decoration: underline 2px transparent; text-underline-offset: 0.3em; transition: text-decoration-color 180ms ease; }
+.top nav a:not(.btn):hover { text-decoration-color: currentColor; }
+.top .btn { padding: 0.75em 1.1em; }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100svh;
+  background: var(--yellow);
+  display: grid; grid-template-rows: auto 1fr auto; grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
+}
+.hero__main { display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; justify-items: center; gap: clamp(40px, 7vh, 96px); padding: 0 var(--margin); }
+.sentence {
+  width: 100%; min-width: 0;
+  display: flex; align-items: baseline; gap: 0.12em;
+  font: 400 clamp(64px, 14.2vw, 260px)/0.86 var(--display);
+  text-transform: uppercase; letter-spacing: -0.01em;
+}
+.sentence__word { flex: none; }
+.strip {
+  flex: 1; min-width: 0;
+  height: 0.74em;
+  border-radius: var(--radius);
+  background: var(--cobalt);
+  overflow: hidden;
+  position: relative;
+  align-self: baseline;
+  transform: translateY(0.02em);
+}
+.strip__track {
+  display: flex; height: 100%; width: max-content;
+  animation: slide 26s linear infinite;
+}
+.strip__track svg { height: 100%; width: auto; aspect-ratio: 1; flex: none; padding: 0.06em; }
+@keyframes slide { to { transform: translateX(-50%); } }
+.strip:hover .strip__track { animation-play-state: paused; }
+.hero__foot { display: flex; justify-content: space-between; align-items: end; gap: 24px; padding: 0 var(--margin) clamp(28px, 5vh, 48px); }
+.hero__foot p { font-size: var(--step-lead); line-height: 1.35; max-width: 34ch; }
+
+/* ---------- Statement with picture words ---------- */
+.features { padding-block: var(--section); }
+.statement {
+  font: 600 clamp(1.5rem, 1rem + 1.6vw, 2.25rem)/1.25 var(--text);
+  letter-spacing: -0.015em;
+  max-width: 40ch;
+}
+.slot {
+  display: inline-block; vertical-align: -0.16em;
+  width: 1.9em; height: 1em;
+  border-radius: 0.2em;
+  overflow: hidden;
+  margin-inline: 0.08em;
+}
+.slot svg { width: 100%; height: 100%; }
+.slot--y { background: var(--yellow); }
+.slot--o { background: var(--orange); }
+.slot--b { background: var(--cobalt); }
+.slot--s { background: var(--sky); }
+.features__aside { margin-top: 72px; margin-left: auto; max-width: 30rem; display: grid; gap: 24px; justify-items: start; }
+
+/* ---------- Finder (the live thing) ---------- */
+.finder { background: var(--cobalt); color: var(--white); padding-block: var(--section); }
+.finder h2 { font-size: var(--step-head); max-width: 12ch; }
+.finder__intro { margin-top: 24px; max-width: 46ch; font-size: var(--step-lead); line-height: 1.4; }
+.finder__grid { margin-top: clamp(48px, 7vw, 96px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.form { display: grid; gap: 22px; }
+.row { display: grid; grid-template-columns: 1fr 1fr 0.6fr; gap: 14px; }
+.field { display: grid; gap: 8px; }
+.field label, .legend { font-weight: 600; font-size: var(--step-small); }
+.field input, .field textarea {
+  font: inherit; color: var(--ink);
+  background: var(--bone);
+  border: 2px solid var(--bone);
+  border-radius: 10px;
+  padding: 0.8em 0.9em;
+  width: 100%;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+.field textarea { resize: vertical; min-height: 5.5em; }
+.field input::placeholder, .field textarea::placeholder { color: #6e6255; }
+.field input:hover, .field textarea:hover { background: var(--white); }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--yellow); background: var(--white); }
+fieldset { border: 0; padding: 0; margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  padding: 0.55em 0.95em 0.55em 0.55em;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.14);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, transform 140ms var(--ease-out);
+}
+.chip span svg { width: 1.7em; height: 1.7em; border-radius: 50%; background: var(--bone); padding: 2px; }
+.chip span:hover { background: rgba(255,255,255,0.26); }
+.chip span:active { transform: scale(0.96); }
+.chip input:checked + span { background: var(--yellow); color: var(--ink); }
+.chip input:focus-visible + span { outline: 3px solid var(--orange); outline-offset: 3px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.btn--y { background: var(--yellow); color: var(--ink); }
+.btn--y:hover { background: var(--orange); }
+.btn--ghost { background: rgba(255,255,255,0.14); color: var(--white); }
+.btn--ghost:hover { background: var(--white); color: var(--ink); }
+
+/* The parts tag */
+.tagwrap { position: sticky; top: 32px; display: grid; justify-items: center; padding-top: 28px; }
+.string { width: 3px; height: 56px; background: var(--yellow); border-radius: 2px; margin-bottom: -18px; }
+.tag {
+  width: min(100%, 420px);
+  background: var(--yellow); color: var(--ink);
+  border-radius: 22px 22px 18px 18px;
+  padding: 56px 28px 30px;
+  position: relative;
+  transform-origin: 50% 0;
+  transition: transform 520ms var(--ease-soft);
+  clip-path: polygon(14% 0, 86% 0, 100% 9%, 100% 100%, 0 100%, 0 9%);
+}
+.tag::before { /* the eyelet */
+  content: ""; position: absolute; left: 50%; top: 18px; width: 22px; height: 22px; margin-left: -11px;
+  border-radius: 50%; background: var(--cobalt); border: 5px solid var(--ink);
+}
+.tag.swing { transform: rotate(-2.5deg); }
+.tag__part { font: 400 var(--step-head)/0.9 var(--display); text-transform: uppercase; margin-top: 10px; overflow-wrap: anywhere; }
+.tag__icon { width: 92px; height: 92px; background: var(--bone); border-radius: 50%; padding: 6px; }
+.tag dl { margin: 22px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; }
+.tag dt { color: var(--ink-soft); }
+.tag dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.tag__ref { margin-top: 22px; display: flex; justify-content: space-between; gap: 12px; font-size: var(--step-small); color: var(--ink-soft); }
+
+/* ---------- Baja (about) ---------- */
+.baja { padding-block: var(--section); display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 10fr); gap: 32px; }
+.baja h2 { grid-column: 1 / -1; font-size: var(--step-head); max-width: 14ch; margin-bottom: clamp(24px, 4vw, 56px); }
+.facts { display: grid; gap: 22px; align-content: start; font-size: var(--step-small); padding-top: 6px; }
+.facts strong { display: block; font-size: var(--step-body); }
+.bio { font-size: var(--step-lead); line-height: 1.4; max-width: 46ch; }
+.bio .statement { margin-bottom: 0.9em; }
+.bio p + p { margin-top: 1em; }
+.bio .soft { font-weight: 600; }
+.dropcap { float: left; width: 3.5em; height: 3.5em; margin: 0.18em 0.5em 0 0; background: var(--orange); overflow: hidden; }
+.dropcap svg { width: 100%; height: 100%; }
+.docs { margin-top: clamp(40px, 6vw, 72px); display: flex; flex-wrap: wrap; gap: 12px; font-size: var(--step-body); }
+.docs li { list-style: none; background: var(--bone-2); padding: 0.7em 1.1em; border-radius: 999px; font-weight: 600; }
+.docs { padding: 0; }
+
+/* ---------- Horario (list) ---------- */
+.horario { background: var(--bone-2); padding-block: var(--section); }
+.horario h2 { font-size: var(--step-head); text-indent: 3vw; max-width: 15ch; }
+.horario__grid { margin-top: 96px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 24px; align-items: end; }
+.map { grid-column: 1 / 5; background: var(--cobalt); border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; position: relative; }
+.map svg { width: 100%; height: 100%; }
+.map a { position: absolute; left: 16px; bottom: 16px; }
+.tablename { grid-column: 7 / 8; align-self: start; font-size: var(--step-small); color: var(--ink-soft); }
+.rows { grid-column: 8 / 13; align-self: start; margin: 0; padding: 0; }
+.rows li { list-style: none; display: grid; grid-template-columns: 30% 1fr auto; gap: 12px; padding-block: 13px; }
+.rows li.gap { margin-top: 32px; }
+.rows .k { color: var(--ink-soft); }
+.rows .v { text-align: right; font-weight: 600; }
+.rows a { text-decoration: none; }
+.rows a:hover { text-decoration: underline; }
+.status { display: inline-flex; align-items: center; gap: 0.5em; margin-top: 28px; font-weight: 600; padding: 0.55em 1em; border-radius: 999px; background: var(--bone); }
+.status i { position: relative; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-soft); }
+.status.open i { background: #1f9d55; }
+.status.open i::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #1f9d55; animation: pulse 2s var(--ease-out) infinite; }
+@keyframes pulse { from { transform: scale(1); opacity: 0.6; } to { transform: scale(2.8); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .status.open i::after { animation: none; } }
+
+/* ---------- Contact ---------- */
+.contact {
+  min-height: 100svh; background: var(--orange); color: var(--ink);
+  display: grid; grid-template-rows: auto 1fr auto; padding: clamp(40px, 6vw, 72px) var(--margin) clamp(28px, 4vw, 44px);
+  gap: 32px;
+}
+.contact__lead { font-size: var(--step-lead); max-width: 30ch; line-height: 1.35; font-weight: 600; }
+.mail {
+  align-self: end;
+  font: 400 clamp(3rem, 10.6vw, 13.5rem)/0.95 var(--display);
+  text-transform: uppercase; letter-spacing: -0.01em;
+  text-decoration: none; display: block;
+  transition: color 200ms ease;
+}
+.mail:hover { color: var(--white); }
+.contact__foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 32px; font-size: var(--step-small); font-weight: 600; }
+.contact__foot a { text-decoration: none; }
+.contact__foot a:hover { text-decoration: underline; }
+
+/* ---------- Footer ---------- */
+.foot { background: var(--ink); color: var(--bone); min-height: 100svh; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto auto; padding-top: clamp(56px, 8vw, 110px); }
+.foot__top { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; }
+.foot__invite { grid-column: 1 / 8; display: grid; gap: 32px; justify-items: start; }
+.foot__invite h2 { font-size: var(--step-head); color: var(--yellow); max-width: 12ch; }
+.foot__links { grid-column: 10 / 13; display: grid; gap: 10px; align-content: start; font-weight: 600; }
+.foot__links a { text-decoration: none; width: fit-content; }
+.foot__links a:hover { color: var(--yellow); }
+.legal { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; font-size: var(--step-small); color: #cfc6b6; padding-bottom: 14px; }
+.giant {
+  font: 400 clamp(120px, 30vw, 560px)/0.8 var(--display);
+  text-transform: uppercase; white-space: nowrap; color: var(--yellow);
+  transform: translateY(26%);
+  margin-left: -0.02em;
+  user-select: none;
+}
+
+/* ---------- Drawn parts: one stroke, one weight ---------- */
+.ln { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js .shutter { clip-path: inset(0 100% 0 0 round var(--radius)); transition: clip-path 1100ms var(--ease-in-out) 250ms; }
+  .js .shutter .strip__track { transform: scale(1.12); }
+  .js .shutter.is-in { clip-path: inset(0 0 0 0 round var(--radius)); }
+  .js .sentence__word { opacity: 0; transform: translateY(0.18em); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out); }
+  .js .is-loaded .sentence__word { opacity: 1; transform: none; }
+  .js .is-loaded .sentence__word + .strip + .sentence__word { transition-delay: 120ms; }
+
+  .js [data-reveal] > * { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 800ms var(--ease-out); }
+  .js [data-reveal].is-in > * { opacity: 1; transform: none; }
+  .js [data-reveal].is-in > *:nth-child(2) { transition-delay: 80ms; }
+  .js [data-reveal].is-in > *:nth-child(3) { transition-delay: 160ms; }
+  .js [data-reveal].is-in > *:nth-child(4) { transition-delay: 240ms; }
+
+  .js [data-rows] li { opacity: 0; transform: translateX(16px); transition: opacity 500ms var(--ease-out), transform 600ms var(--ease-out); }
+  .js [data-rows].is-in li { opacity: 1; transform: none; }
+  .js .slot { transform: scale(0.8); opacity: 0; transition: transform 600ms var(--ease-soft), opacity 400ms ease; }
+  .js .is-in .slot { transform: none; opacity: 1; }
+  .js .is-in .slot:nth-of-type(2) { transition-delay: 120ms; }
+  .js .is-in .slot:nth-of-type(3) { transition-delay: 240ms; }
+  .js .is-in .slot:nth-of-type(4) { transition-delay: 360ms; }
+  .js .giant { transform: translateY(60%); transition: transform 1200ms var(--ease-soft); }
+  .js .foot.is-in .giant { transform: translateY(26%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .strip__track { animation: none; }
+  .tag { transition: none; }
+}
+
+/* ---------- Tablet & phone ---------- */
+@media (max-width: 960px) {
+  .finder__grid { grid-template-columns: 1fr; }
+  .tagwrap { position: static; order: -1; }
+  .horario__grid { grid-template-columns: 1fr; gap: 0; }
+  .map, .tablename, .rows { grid-column: auto; }
+  .tablename { display: none; }
+  .map { width: 60%; margin-left: auto; margin-top: 48px; order: 2; }
+  .foot__top { grid-template-columns: 1fr; }
+  .foot__invite, .foot__links { grid-column: auto; }
+  .foot__links { grid-auto-flow: column; justify-content: start; gap: 20px; flex-wrap: wrap; }
+}
+@media (max-width: 640px) {
+  .top nav a:not(.btn):not(.keep) { display: none; }
+  .brand { font-size: 1.5rem; }
+  .sentence { flex-wrap: wrap; justify-content: center; font-size: 22vw; gap: 0; row-gap: 0.1em; text-align: center; }
+  .sentence__word { width: 100%; }
+  .strip { flex: none; width: 100%; height: auto; aspect-ratio: 2 / 1; transform: none; }
+  .strip__track svg { padding: 10px; }
+  .hero__foot { flex-direction: column; align-items: stretch; text-align: center; }
+  .hero__foot p { font-size: var(--step-body); margin-inline: auto; }
+  .hero__foot .btn { justify-content: center; }
+  .statement { font-size: 1.375rem; }
+  .slot { width: 1.5em; }
+  .row { grid-template-columns: 1fr 1fr; }
+  .row .field:last-child { grid-column: 1 / -1; }
+  .actions .btn { flex: 1 1 100%; justify-content: center; }
+  .baja { grid-template-columns: 1fr; }
+  .facts { order: 3; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .dropcap { width: 3.2em; height: 3.2em; }
+  .horario h2 { text-indent: 0; }
+  .horario__grid { margin-top: 56px; }
+  .rows li { grid-template-columns: 1fr auto; }
+  .rows li .p { grid-column: 1 / -1; grid-row: 2; }
+  .contact { min-height: 86svh; }
+  .mail { font-size: 12.6vw; }
+  .contact__foot { flex-direction: column; }
+  .giant { font-size: 38vw; }
+  .foot__invite h2 { font-size: 11vw; }
+}
+</style>
+</head>
+<body>
+
+<!-- Drawn parts: one flat language, palette colours, one 4px ink stroke -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="p-llanta" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="44" fill="#16130f"/>
+      <circle cx="50" cy="50" r="31" fill="#f3efe6" stroke="#16130f" stroke-width="4"/>
+      <path class="ln" stroke-width="7" d="M50 50V22M50 50L76.6 41.3M50 50L66.5 72.7M50 50L33.5 72.7M50 50L23.4 41.3"/>
+      <circle cx="50" cy="50" r="8" fill="#ff5a1f" stroke="#16130f" stroke-width="4"/>
+    </symbol>
+    <symbol id="p-faro" viewBox="0 0 100 100">
+      <path d="M8 58Q8 26 48 22L88 26Q95 50 87 74L30 78Q8 76 8 58Z" fill="#f3efe6" stroke="#16130f" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="38" cy="51" r="17" fill="#ffd23f" stroke="#16130f" stroke-width="4"/>
+      <circle cx="38" cy="51" r="6" fill="#16130f"/>
+      <circle cx="72" cy="51" r="9" fill="#ff5a1f" stroke="#16130f" stroke-width="4"/>
+    </symbol>
+    <symbol id="p-motor" viewBox="0 0 100 100">
+      <rect x="22" y="20" width="14" height="22" rx="2" fill="#ffd23f" stroke="#16130f" stroke-width="4"/>
+      <rect x="43" y="20" width="14" height="22" rx="2" fill="#ffd23f" stroke="#16130f" stroke-width="4"/>
+      <rect x="64" y="20" width="14" height="22" rx="2" fill="#ffd23f" stroke="#16130f" stroke-width="4"/>
+      <rect x="14" y="40" width="72" height="42" rx="4" fill="#ff5a1f" stroke="#16130f" stroke-width="4"/>
+      <circle cx="16" cy="66" r="11" fill="#f3efe6" stroke="#16130f" stroke-width="4"/>
+      <path class="ln" d="M38 54H76M38 66H76"/>
+    </symbol>
+    <symbol id="p-caja" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="37" fill="none" stroke="#16130f" stroke-width="13" stroke-dasharray="9.69 9.69"/>
+      <circle cx="50" cy="50" r="31" fill="#a9c4ff" stroke="#16130f" stroke-width="4"/>
+      <circle cx="50" cy="50" r="11" fill="#f3efe6" stroke="#16130f" stroke-width="4"/>
+    </symbol>
+    <symbol id="p-puerta" viewBox="0 0 100 100">
+      <path d="M14 86V42L38 16H86V86Z" fill="#ff5a1f" stroke="#16130f" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M24 44L42 26H76V44Z" fill="#a9c4ff" stroke="#16130f" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="60" y="54" width="18" height="7" rx="3.5" fill="#16130f"/>
+    </symbol>
+    <symbol id="p-retro" viewBox="0 0 100 100">
+      <path d="M58 70L72 88" class="ln" stroke-width="9"/>
+      <path d="M14 30Q48 12 86 28Q92 56 76 70H26Q10 58 14 30Z" fill="#ffd23f" stroke="#16130f" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M24 34Q48 22 76 33Q80 52 70 60H32Q22 52 24 34Z" fill="#a9c4ff" stroke="#16130f" stroke-width="4" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="p-otra" viewBox="0 0 100 100">
+      <path d="M22 78L58 42" class="ln" stroke-width="12"/>
+      <path d="M52 22A20 20 0 1 0 78 48L66 46L54 34Z" fill="#ffd23f" stroke="#16130f" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M22 78L58 42" fill="none" stroke="#ff5a1f" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="p-papel" viewBox="0 0 100 100">
+      <path d="M24 12H64L80 28V88H24Z" fill="#f3efe6" stroke="#16130f" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M64 12V28H80" class="ln"/>
+      <path class="ln" d="M34 42H70M34 54H70M34 66H56"/>
+      <circle cx="66" cy="74" r="10" fill="#1a43bf" stroke="#16130f" stroke-width="4"/>
+    </symbol>
+    <symbol id="p-coche" viewBox="0 0 100 100">
+      <path d="M8 64V52L22 46L34 30H66L80 46L92 50V64Z" fill="#ffd23f" stroke="#16130f" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M40 36H62L72 46H36Z" fill="#a9c4ff" stroke="#16130f" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="28" cy="66" r="10" fill="#16130f"/><circle cx="28" cy="66" r="4" fill="#f3efe6"/>
+      <circle cx="72" cy="66" r="10" fill="#16130f"/><circle cx="72" cy="66" r="4" fill="#f3efe6"/>
+      <path class="ln" d="M4 80H96"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="hero" id="inicio">
+  <div class="top">
+    <a class="brand" href="#inicio" aria-label="Mercacars, inicio">MERCACARS</a>
+    <nav aria-label="Principal">
+      <a href="#piezas">Piezas</a>
+      <a href="#baja">Baja</a>
+      <a href="#horario">Horario</a>
+      <a class="btn keep" href="tel:+34977604947">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+        <span class="num">977 604 947</span>
+      </a>
+    </nav>
+  </div>
+
+  <div class="hero__main">
+    <h1 class="sentence">
+      <span class="sentence__word">Segunda</span>
+      <span class="strip shutter" role="img" aria-label="Piezas recuperadas: llantas, faros, motores, cajas de cambio, puertas y retrovisores">
+        <span class="strip__track" aria-hidden="true">
+          <svg><use href="#p-llanta"/></svg><svg><use href="#p-faro"/></svg><svg><use href="#p-motor"/></svg><svg><use href="#p-caja"/></svg><svg><use href="#p-puerta"/></svg><svg><use href="#p-retro"/></svg>
+          <svg><use href="#p-llanta"/></svg><svg><use href="#p-faro"/></svg><svg><use href="#p-motor"/></svg><svg><use href="#p-caja"/></svg><svg><use href="#p-puerta"/></svg><svg><use href="#p-retro"/></svg>
+        </span>
+      </span>
+      <span class="sentence__word">vida</span>
+    </h1>
+  </div>
+
+  <div class="hero__foot">
+    <p>Desguace y Centro Autorizado de Tratamiento de vehículos en Valls (Tarragona). Recambios de segunda mano y baja de tu coche.</p>
+    <a class="btn" href="#piezas">Pedir una pieza
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="features wrap" aria-labelledby="que-hacemos" data-reveal>
+    <h2 id="que-hacemos" class="vh">Qué hacemos</h2>
+    <p class="statement">
+      Recuperamos motores <span class="slot slot--y"><svg aria-hidden="true"><use href="#p-motor"/></svg></span>, faros <span class="slot slot--b"><svg aria-hidden="true"><use href="#p-faro"/></svg></span> y llantas <span class="slot slot--o"><svg aria-hidden="true"><use href="#p-llanta"/></svg></span> de coches que ya no circulan, y tramitamos su baja <span class="slot slot--s"><svg aria-hidden="true"><use href="#p-papel"/></svg></span> en la DGT.
+    </p>
+    <div class="features__aside">
+      <p>Pieza de desguace: el recambio original de tu coche, a menos precio y sin fabricar nada nuevo.</p>
+      <a class="btn" href="#piezas">Buscar mi pieza</a>
+    </div>
+  </section>
+
+  <section class="finder" id="piezas" aria-labelledby="piezas-h">
+    <div class="wrap">
+      <div data-reveal>
+        <h2 id="piezas-h">¿Qué pieza buscas?</h2>
+        <p class="finder__intro">Rellena la etiqueta con tu coche y la pieza. Nos llega por email o nos la lees por teléfono, y te decimos si la tenemos y a qué precio.</p>
+      </div>
+
+      <div class="finder__grid">
+        <form class="form" id="pedido" action="mailto:catv@mercacars.com" method="post" enctype="text/plain" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="marca">Marca</label>
+              <input id="marca" name="marca" list="marcas" autocomplete="off" placeholder="Seat">
+              <datalist id="marcas">
+                <option>Audi</option><option>BMW</option><option>Citroën</option><option>Dacia</option><option>Fiat</option><option>Ford</option><option>Honda</option><option>Hyundai</option><option>Kia</option><option>Mercedes-Benz</option><option>Nissan</option><option>Opel</option><option>Peugeot</option><option>Renault</option><option>Seat</option><option>Škoda</option><option>Toyota</option><option>Volkswagen</option><option>Volvo</option>
+              </datalist>
+            </div>
+            <div class="field">
+              <label for="modelo">Modelo</label>
+              <input id="modelo" name="modelo" autocomplete="off" placeholder="Ibiza 1.4">
+            </div>
+            <div class="field">
+              <label for="anio">Año</label>
+              <input id="anio" name="anio" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="2012" class="num">
+            </div>
+          </div>
+
+          <fieldset>
+            <legend class="legend">Pieza</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="pieza" value="Motor" data-icon="p-motor" checked><span><svg aria-hidden="true"><use href="#p-motor"/></svg>Motor</span></label>
+              <label class="chip"><input type="radio" name="pieza" value="Caja de cambios" data-icon="p-caja"><span><svg aria-hidden="true"><use href="#p-caja"/></svg>Caja de cambios</span></label>
+              <label class="chip"><input type="radio" name="pieza" value="Faro" data-icon="p-faro"><span><svg aria-hidden="true"><use href="#p-faro"/></svg>Faro</span></label>
+              <label class="chip"><input type="radio" name="pieza" value="Puerta" data-icon="p-puerta"><span><svg aria-hidden="true"><use href="#p-puerta"/></svg>Puerta</span></label>
+              <label class="chip"><input type="radio" name="pieza" value="Retrovisor" data-icon="p-retro"><span><svg aria-hidden="true"><use href="#p-retro"/></svg>Retrovisor</span></label>
+              <label class="chip"><input type="radio" name="pieza" value="Llanta" data-icon="p-llanta"><span><svg aria-hidden="true"><use href="#p-llanta"/></svg>Llanta</span></label>
+              <label class="chip"><input type="radio" name="pieza" value="Otra pieza" data-icon="p-otra"><span><svg aria-hidden="true"><use href="#p-otra"/></svg>Otra</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="nota">Detalles (opcional)</label>
+            <textarea id="nota" name="nota" placeholder="Lado del conductor, color, referencia de la pieza, tu teléfono…"></textarea>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn--y" id="enviar" href="mailto:catv@mercacars.com?subject=Consulta%20de%20pieza">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg>
+              Enviar por email
+            </a>
+            <a class="btn btn--ghost" href="tel:+34977604947">Llamar al <span class="num">977 604 947</span></a>
+          </div>
+        </form>
+
+        <div class="tagwrap" aria-live="polite">
+          <div class="string" aria-hidden="true"></div>
+          <article class="tag" id="tag" aria-label="Tu etiqueta de pieza">
+            <svg class="tag__icon" aria-hidden="true"><use id="tag-icon" href="#p-motor"/></svg>
+            <p class="tag__part" id="tag-part">Motor</p>
+            <dl>
+              <dt>Marca</dt><dd id="tag-marca">Por rellenar</dd>
+              <dt>Modelo</dt><dd id="tag-modelo">Por rellenar</dd>
+              <dt>Año</dt><dd id="tag-anio" class="num">Por rellenar</dd>
+            </dl>
+            <p class="tag__ref"><span>Mercacars · Valls</span><span class="num" id="tag-ref">Ref.</span></p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="baja wrap" id="baja" aria-labelledby="baja-h">
+    <h2 id="baja-h" data-reveal><span>Tu coche, dado de baja como toca</span></h2>
+    <aside class="facts" aria-label="Datos rápidos">
+      <p><strong>CAT</strong>Centro Autorizado de Tratamiento</p>
+      <p><strong>Valls</strong>Tarragona, junto a la C-51</p>
+      <p><strong class="num">977 604 947</strong>Llama y lo miramos</p>
+    </aside>
+    <div class="bio" data-reveal>
+      <p class="statement"><span class="dropcap" aria-hidden="true"><svg><use href="#p-coche"/></svg></span>Si tu coche ha llegado al final, en Mercacars nos ocupamos de todo el papeleo.</p>
+      <p>Como Centro Autorizado de Tratamiento recibimos el vehículo con su documentación, tramitamos la baja definitiva en la DGT y te entregamos el certificado de destrucción. Después lo descontaminamos y recuperamos todo lo que todavía sirve.</p>
+      <p class="soft">Así tu coche deja de pagar impuesto y seguro, y sus piezas vuelven a la carretera en otros coches.</p>
+      <ul class="docs" aria-label="Qué traer">
+        <li>Permiso de circulación</li>
+        <li>Ficha técnica (ITV)</li>
+        <li>DNI del titular</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="horario" id="horario" aria-labelledby="horario-h">
+    <div class="wrap">
+      <h2 id="horario-h" data-reveal><span>Cuándo abrimos y dónde estamos</span></h2>
+      <div class="horario__grid">
+        <figure class="map" style="margin:0">
+          <svg viewBox="0 0 400 500" role="img" aria-label="Esquema de acceso: Mercacars en la Partida Ruanes de Valls, junto a la carretera C-51 hacia Barcelona">
+            <rect width="400" height="500" fill="#1a43bf"/>
+            <path d="M-20 430C80 400 150 330 210 250S330 90 430 40" fill="none" stroke="#16130f" stroke-width="34" stroke-linecap="round"/>
+            <path d="M-20 430C80 400 150 330 210 250S330 90 430 40" fill="none" stroke="#ffd23f" stroke-width="4" stroke-dasharray="18 16"/>
+            <path d="M40 120C120 160 170 200 210 250" fill="none" stroke="#a9c4ff" stroke-width="14" stroke-linecap="round"/>
+            <rect x="248" y="250" width="92" height="64" rx="8" fill="#ff5a1f" stroke="#16130f" stroke-width="4"/>
+            <circle cx="294" cy="282" r="12" fill="#16130f"/>
+            <text x="30" y="62" fill="#ffffff" font-family="Anton, sans-serif" font-size="40">VALLS</text>
+            <text x="300" y="98" fill="#ffffff" font-family="Work Sans, sans-serif" font-weight="600" font-size="18" text-anchor="middle">C-51 · Barcelona</text>
+            <text x="294" y="346" fill="#ffffff" font-family="Work Sans, sans-serif" font-weight="600" font-size="18" text-anchor="middle">Mercacars</text>
+          </svg>
+          <a class="btn btn--light" href="https://www.google.com/maps/search/?api=1&amp;query=Mercacars+Partida+Ruanes+Valls" target="_blank" rel="noopener">Abrir en Maps</a>
+        </figure>
+        <p class="tablename">Horario</p>
+        <div style="grid-column: 8 / 13" class="rows-col">
+          <ul class="rows num" data-rows>
+            <li><span class="k">Lun a vie</span><span class="p">Mañanas</span><span class="v">9:00 – 13:00</span></li>
+            <li><span class="k">Lun a vie</span><span class="p">Tardes</span><span class="v">15:00 – 19:00</span></li>
+            <li><span class="k">Sábado</span><span class="p">Mañana</span><span class="v">10:00 – 13:00</span></li>
+            <li><span class="k">Domingo</span><span class="p">Todo el día</span><span class="v">Cerrado</span></li>
+            <li class="gap"><span class="k">Dirección</span><span class="p">Partida Ruanes, s/n</span><span class="v">43800 Valls</span></li>
+            <li><span class="k">Acceso</span><span class="p">Ctra. Valls – Barcelona</span><span class="v">C-51</span></li>
+            <li><span class="k">Teléfono</span><span class="p">Fijo</span><span class="v"><a href="tel:+34977604947">977 604 947 →</a></span></li>
+            <li><span class="k">Móvil</span><span class="p">Fuera de oficina</span><span class="v"><a href="tel:+34609392600">609 392 600 →</a></span></li>
+            <li class="gap"><span class="k">Email</span><span class="p">Piezas y bajas</span><span class="v"><a href="mailto:catv@mercacars.com">catv@mercacars.com →</a></span></li>
+          </ul>
+          <p class="status" id="status" hidden><i aria-hidden="true"></i><span></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto" aria-labelledby="contacto-h">
+    <h2 id="contacto-h" class="vh">Contacto</h2>
+    <p class="contact__lead">Escríbenos la marca, el modelo y la pieza. Te contestamos si la tenemos.</p>
+    <a class="mail" href="mailto:catv@mercacars.com">catv@<wbr>mercacars.com</a>
+    <div class="contact__foot">
+      <span><a href="tel:+34977604947" class="num">977 604 947</a> · Valls, Tarragona</span>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Mercacars+Partida+Ruanes+Valls" target="_blank" rel="noopener">Cómo llegar →</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="pie">
+  <div class="foot__top wrap">
+    <div class="foot__invite">
+      <h2>¿Hablamos de tu coche?</h2>
+      <a class="btn btn--y" href="tel:+34977604947">Llamar ahora</a>
+    </div>
+    <nav class="foot__links" aria-label="Pie">
+      <a href="#piezas">Piezas</a>
+      <a href="#baja">Baja DGT</a>
+      <a href="#horario">Horario</a>
+      <a href="mailto:catv@mercacars.com">Email</a>
+    </nav>
+  </div>
+  <div></div>
+  <p class="legal wrap"><span>© <span id="y">2026</span> Mercacars S.C.P. · Partida Ruanes, s/n · 43800 Valls (Tarragona)</span><span>Ilustraciones dibujadas para esta web</span></p>
+  <p class="giant" aria-hidden="true">Mercacars</p>
+</footer>
+
+<script>
+// Hero: words rise, then the strip opens like a shutter.
+requestAnimationFrame(() => {
+  document.querySelector('.hero').classList.add('is-loaded');
+  setTimeout(() => document.querySelector('.shutter').classList.add('is-in'), 60);
+});
+
+// Reveal once per section; never leaves content hidden.
+(() => {
+  const targets = document.querySelectorAll('[data-reveal], [data-rows], .foot');
+  const show = (el) => el.classList.add('is-in');
+  if (!('IntersectionObserver' in window)) { targets.forEach(show); return; }
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
+  targets.forEach((el) => io.observe(el));
+  addEventListener('load', () => setTimeout(() => targets.forEach((el) => {
+    const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) show(el);
+  }), 2500));
+})();
+
+// The parts tag: fills in as you type, swings when the part changes.
+(() => {
+  const form = document.getElementById('pedido');
+  const tag = document.getElementById('tag');
+  const $ = (id) => document.getElementById(id);
+  const ref = 'Ref. ' + new Date().toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' }).replace('/', '·');
+  $('tag-ref').textContent = ref;
+  let last = 'Motor';
+  const swing = () => {
+    tag.classList.add('swing');
+    clearTimeout(swing.t);
+    swing.t = setTimeout(() => tag.classList.remove('swing'), 260);
+  };
+  const update = () => {
+    const f = new FormData(form);
+    const pieza = f.get('pieza') || 'Pieza';
+    const marca = (f.get('marca') || '').trim();
+    const modelo = (f.get('modelo') || '').trim();
+    const anio = (f.get('anio') || '').replace(/\D/g, '').slice(0, 4);
+    const nota = (f.get('nota') || '').trim();
+    $('tag-part').textContent = pieza;
+    $('tag-marca').textContent = marca || 'Por rellenar';
+    $('tag-modelo').textContent = modelo || 'Por rellenar';
+    $('tag-anio').textContent = anio || 'Por rellenar';
+    const checked = form.querySelector('input[name=pieza]:checked');
+    $('tag-icon').setAttribute('href', '#' + (checked ? checked.dataset.icon : 'p-otra'));
+    if (pieza !== last) { swing(); last = pieza; }
+    const coche = [marca, modelo, anio && '(' + anio + ')'].filter(Boolean).join(' ') || 'mi coche';
+    const subject = 'Consulta de pieza: ' + pieza + ' para ' + coche;
+    const body = [
+      'Hola, busco esta pieza:',
+      '',
+      'Pieza: ' + pieza,
+      'Marca: ' + (marca || '-'),
+      'Modelo: ' + (modelo || '-'),
+      'Año: ' + (anio || '-'),
+      nota ? 'Detalles: ' + nota : '',
+      '',
+      '¿La tenéis y a qué precio? Gracias.'
+    ].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n');
+    $('enviar').href = 'mailto:catv@mercacars.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  };
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  form.addEventListener('submit', (e) => { e.preventDefault(); location.href = $('enviar').href; });
+  update();
+})();
+
+// Open now? Computed in Valls' own time zone.
+(() => {
+  const el = document.getElementById('status');
+  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Madrid' }));
+  const d = now.getDay(), m = now.getHours() * 60 + now.getMinutes();
+  const h = (x) => x * 60;
+  const slots = d >= 1 && d <= 5 ? [[h(9), h(13)], [h(15), h(19)]] : d === 6 ? [[h(10), h(13)]] : [];
+  const fmt = (x) => Math.floor(x / 60) + ':' + (x % 60 < 10 ? '0' : '') + (x % 60);
+  const open = slots.find(([a, b]) => m >= a && m < b);
+  const next = slots.find(([a]) => m < a);
+  el.querySelector('span').textContent = open
+    ? 'Abierto ahora · cierra a las ' + fmt(open[1])
+    : next ? 'Cerrado ahora · abrimos hoy a las ' + fmt(next[0]) : 'Cerrado ahora · consulta el horario';
+  el.classList.toggle('open', !!open);
+  el.hidden = false;
+  document.getElementById('y').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
