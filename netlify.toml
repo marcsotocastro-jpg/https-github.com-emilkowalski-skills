@@ -1,0 +1,13 @@
+[build]
+  command = "node build.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Redirige el dominio sin www (ajústalo si prefieres www)
+# [[redirects]]
+#   from = "https://www.iaensimple.com/*"
+#   to = "https://iaensimple.com/:splat"
+#   status = 301
+#   force = true
