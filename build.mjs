@@ -184,14 +184,21 @@ function blockHtml(b, l) {
 const plain = (blocks) => blocks.map((b) => b.text || (b.items || []).join(' ')).join(' ').replace(/\*\*|`|\[|\]\([^)]*\)/g, '');
 
 /* ---------- Anuncios ---------- */
-const AD_FMT = { 'after-intro': 'article', 'mid-article': 'article', 'before-faq': 'auto', sidebar: 'auto', 'home-mid': 'auto', 'list-feed': 'feed' };
+const AD_FMT = { 'below-hero': 'auto', 'home-mid': 'auto', 'list-feed': 'feed', 'after-intro': 'article', 'mid-article': 'article', 'before-faq': 'auto', 'before-related': 'auto', sidebar: 'auto' };
+const AD_INFO = {
+  horizontal: { es: ['Display horizontal', '728 × 90 · móvil 320 × 100'], en: ['Horizontal display', '728 × 90 · mobile 320 × 100'] },
+  article: { es: ['In-article', 'Adaptable · 336 × 280'], en: ['In-article', 'Responsive · 336 × 280'] },
+  feed: { es: ['In-feed', 'Nativo, con aspecto de tarjeta'], en: ['In-feed', 'Native, card-style'] },
+  sidebar: { es: ['Display lateral', '300 × 250'], en: ['Sidebar display', '300 × 250'] },
+};
+const adw = (slot, l) => { const a = ad(slot, l); return a ? `<div class="w ad-band">${a}</div>` : ''; };
 function ad(slot, l) {
   const id = SITE.adsense.slots[slot], fmt = AD_FMT[slot], kind = fmt === 'feed' ? 'feed' : slot === 'sidebar' ? 'sidebar' : fmt === 'article' ? 'article' : 'horizontal';
   if (SITE.adsense.client && id) {
     const attrs = fmt === 'article' ? 'data-ad-format="fluid" data-ad-layout="in-article"' : fmt === 'feed' ? `data-ad-format="fluid" data-ad-layout-key="${esc(SITE.adsense.feedLayoutKey)}"` : 'data-ad-format="auto" data-full-width-responsive="true"';
     return `<aside class="ad ad--${kind}" aria-label="${T[l].ad}"><span class="ad-label">${T[l].ad}</span><div class="ad-box live"><ins class="adsbygoogle" style="display:block${fmt === 'article' ? ';text-align:center' : ''}" data-ad-client="${esc(SITE.adsense.client)}" data-ad-slot="${esc(id)}" ${attrs}></ins></div></aside>`;
   }
-  if (PREVIEW_ADS) return `<aside class="ad ad--${kind}"><span class="ad-label">${T[l].ad}</span><div class="ad-box"><div><b>${slot}</b>${kind}</div></div></aside>`;
+  if (PREVIEW_ADS || SITE.adsense.showPlaceholders) { const [name, size] = AD_INFO[kind][l]; return `<aside class="ad ad--${kind}" data-slot="${slot}" aria-label="${T[l].ad}"><span class="ad-label">${T[l].ad}</span><div class="ad-box"><div><b>${name}</b>${size}</div></div></aside>`; }
   return '';
 }
 
@@ -286,6 +293,7 @@ function home(l) {
 <div class="chat-foot"><div class="dots" id="dots">${DEMO[l].map((_, i) => `<button class="dot${i ? '' : ' on'}" type="button" data-i="${i}" aria-label="${i + 1}"></button>`).join('')}</div><button class="copy" type="button" id="dcopy">${t.copyDemo}</button></div></div>
 </div></section>
 <section class="ticker" aria-label="${t.tickerLabel}"><span class="tl">${t.tickerLabel}</span><div class="tv"><div class="ticker-track">${[...list, ...list].map((g, i) => `<button class="tk" type="button" data-p="${esc(g.prompt)}"${i >= list.length ? ' aria-hidden="true" tabindex="-1"' : ''}><span>${esc(g.prompt)}</span></button>`).join('')}</div></div></section>
+${adw('below-hero', l)}
 <section class="sec" style="padding-top:48px"><div class="w"><div class="head"><div><span class="eyebrow">${t.startHere}</span><h2>${t.whatDo}</h2></div></div>
 <div class="intents">${INTENTS[l].map(([n, c]) => `<a class="intent" href="${catUrl(c, l)}"><div><small>${CATS[c][l][1]}</small><b>${n}</b></div><span class="arr">${arrow}</span></a>`).join('')}</div></div></section>
 ${labHtml(l)}
@@ -293,7 +301,7 @@ ${labHtml(l)}
 <div id="resume"></div>
 <a class="card feature" href="${guideUrl(f)}" data-url="${guideUrl(f)}">${cover(f)}<div class="cb"><span class="eyebrow">${t.featured} · ${CATS[f.cat][l][1]}</span><h3>${esc(f.title)}</h3><p>${esc(f.desc)}</p><span class="meta">${fmtDate(f.updated, l)} · ${f.min} ${t.minRead}</span></div></a>
 <div class="grid g3">${withFeed(list.slice(1, 6), l)}</div></div></section>
-${ad('home-mid', l) ? `<div class="w ad-band">${ad('home-mid', l)}</div>` : ''}
+${adw('home-mid', l)}
 <section class="sec" style="background:var(--card);border-block:1px solid var(--line)"><div class="w"><div class="head"><div><span class="eyebrow">${t.toolsEyebrow}</span><h2>${t.toolsTitle}</h2></div><a class="more" href="${PAGES.tools[l]}">${t.seeAll}</a></div>${toolsTable(l, 5)}</div></section>
 ${services(l)}`;
   const desc = l === 'es' ? 'Guías prácticas y ejemplos que puedes copiar para usar la inteligencia artificial en tu trabajo, tus estudios y tu negocio, sin complicaciones.' : 'Practical guides and copy-ready examples to use artificial intelligence at work, in your studies and in your business, without the hassle.';
@@ -304,7 +312,7 @@ function listPage(l, catId) {
   const t = T[l], all = GUIDES.filter((g) => g.lang === l), list = catId ? all.filter((g) => g.cat === catId) : all;
   const title = catId ? CATS[catId][l][1] : t.guides, desc = catId ? CATS[catId][l][2] : t.guidesPageDesc;
   const chips = catId ? '' : `<div class="chips" id="chc">${[['', t.all], ...Object.keys(CATS).map((c) => [c, CATS[c][l][1]])].map(([v, n], i) => `<button class="chip${i ? '' : ' on'}" type="button" data-cat="${v}" aria-pressed="${!i}">${n}</button>`).join('')}</div>`;
-  const body = `<div class="w">${crumbs(l, catId ? [[t.guides, PAGES.guides[l]], [title]] : [[title]])}<div class="pagehead"><span class="eyebrow">${t.guidesCount(list.length)}</span><h1>${esc(title)}</h1><p>${esc(desc)}</p></div>
+  const body = `<div class="w">${crumbs(l, catId ? [[t.guides, PAGES.guides[l]], [title]] : [[title]])}<div class="pagehead"><span class="eyebrow">${t.guidesCount(list.length)}</span><h1>${esc(title)}</h1><p>${esc(desc)}</p></div>${ad('below-hero', l) ? `<div class="ad-band" style="padding-top:0">${ad('below-hero', l)}</div>` : ''}
 <div class="filters" id="filters" style="margin-bottom:28px"><input id="cq" type="search" placeholder="${t.filterPh}" aria-label="${t.filterPh}">${chips}<div class="chips" id="chl">${[['', t.all], ['beginner', t.levels.beginner], ['intermediate', t.levels.intermediate]].map(([v, n], i) => `<button class="chip${i ? '' : ' on'}" type="button" data-level="${v}" aria-pressed="${!i}">${n}</button>`).join('')}</div></div>
 <div class="grid g3" id="cl" style="padding-bottom:24px">${withFeed(list, l)}</div><p id="nores" hidden>${t.noResults}</p>
 ${catId ? `<div class="head" style="margin-top:40px"><h2>${l === 'es' ? 'Otras secciones' : 'Other sections'}</h2></div><div class="chips">${Object.keys(CATS).filter((c) => c !== catId).map((c) => `<a class="chip" href="${catUrl(c, l)}">${CATS[c][l][1]}</a>`).join('')}</div>` : ''}</div>${services(l)}`;
@@ -326,6 +334,7 @@ function guidePage(g) {
 ${html}
 <div class="author"><div class="lg" aria-hidden="true">IA</div><div><span class="eyebrow">${t.authorBox}</span><p style="margin-top:6px"><a href="${PAGES.about[l]}"><b>${esc(SITE.author.name[l])}</b></a>. ${esc(SITE.author.bio[l])}</p></div></div>
 <a class="next" href="${guideUrl(nx)}"><span><span class="eyebrow">${t.next} · ${nx.min} ${t.min}</span><b>${esc(nx.title)}</b></span><span class="arr">${arrow}</span></a>
+${ad('before-related', l)}
 <h2>${t.related}</h2><div class="related">${relA.map((r) => `<a href="${guideUrl(r)}"><b>${esc(r.title)}</b><span class="meta">${r.min} ${t.min}</span></a>`).join('')}</div>
 </div>
 <aside class="side"><nav class="toc" aria-label="${t.inThisGuide}"><span class="eyebrow">${t.inThisGuide}</span>${toc.map(([id, n]) => `<a href="#${id}" data-g="${id}">${esc(n)}</a>`).join('')}<span class="left" id="left">${g.min} ${t.minRead}</span></nav>${ad('sidebar', l)}</aside></article></div>${services(l)}`;

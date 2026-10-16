@@ -34,7 +34,24 @@ Crea `content/es/mi-guia.md` y `content/en/my-guide.md` con el mismo `id`. Forma
 - Enlaces internos: `[texto](guia:id-de-la-guia)` o `[texto](page:tools)`.
 - Tablas con `| col | col |`.
 
-El primer párrafo es la introducción. Los anuncios se colocan solos: tras la introducción, antes de la tercera sección y antes de las preguntas frecuentes.
+El primer párrafo es la introducción.
+
+### Espacios de anuncios
+
+La web tiene 8 espacios de AdSense ya colocados. Mientras un espacio no tenga su número de bloque, se ve un hueco reservado con la etiqueta «Publicidad» (`adsense.showPlaceholders: true`). Así sabes dónde irá cada anuncio y la página no salta cuando cargue.
+
+| Espacio | Dónde aparece | Formato |
+|---|---|---|
+| `below-hero` | Bajo la portada y bajo la cabecera de cada sección | Display horizontal |
+| `home-mid` | Portada, entre las guías y las herramientas | Display horizontal |
+| `list-feed` | Tras la 3.ª tarjeta de cada listado | In-feed |
+| `after-intro` | Tras la introducción de cada guía | In-article |
+| `mid-article` | Antes de la tercera sección de cada guía | In-article |
+| `before-faq` | Antes de las preguntas frecuentes | Display |
+| `before-related` | Antes de «Sigue leyendo» | Display |
+| `sidebar` | Barra lateral de las guías (solo ordenador) | Display 300 × 250 |
+
+Cuando pegas el número de un bloque en `adsense.slots`, ese hueco se convierte en un anuncio real.
 
 ## Publicar en Netlify (recomendado, gratis)
 
@@ -53,7 +70,7 @@ También funciona en Cloudflare Pages o Vercel (comando `node build.mjs`, carpet
 5. Publica la web y registra el dominio en **Google Search Console**: verifica la propiedad y envía `https://iaensimple.com/sitemap.xml`.
 6. Crea tu cuenta en [AdSense](https://adsense.google.com), añade el sitio y copia tu ID `ca-pub-…` en `adsense.client`. Al publicar, la web incluye el código de AdSense en todas las páginas y genera `ads.txt` sola.
 7. En AdSense → **Privacidad y mensajes**, crea el **mensaje de consentimiento del RGPD** (plataforma certificada de Google). Es obligatorio para mostrar anuncios en Europa y la web ya lo explica en la política de cookies.
-8. Solicita la revisión. Cuando te aprueben, crea un bloque de anuncios por espacio y pega su número en `adsense.slots`. También puedes activar los anuncios automáticos.
+8. Solicita la revisión. Si prefieres que el revisor no vea huecos vacíos, pon `showPlaceholders: false` hasta que tengas los bloques (puedes activar los anuncios automáticos mientras tanto). Cuando te aprueben, crea un bloque de anuncios por espacio y pega su número en `adsense.slots`. También puedes activar los anuncios automáticos.
 
 ## Ideas para ganar más
 

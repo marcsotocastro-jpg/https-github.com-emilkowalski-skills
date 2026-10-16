@@ -26,13 +26,18 @@ export default {
   adsense: {
     client: '', // ej. 'ca-pub-1234567890123456'
     feedLayoutKey: '', // data-ad-layout-key del bloque In-feed
+    // Muestra los huecos reservados ("Publicidad") mientras un espacio no tenga su número de bloque.
+    // Así se ve dónde irá cada anuncio y la página no salta cuando llegue. Pon false para ocultarlos.
+    showPlaceholders: true,
     slots: {
-      'after-intro': '',   // In-article, después de la introducción de cada guía
-      'mid-article': '',   // In-article, a mitad de la guía
-      'before-faq': '',    // Display, antes de las preguntas frecuentes
-      'sidebar': '',       // Display 300×250 en la barra lateral (solo ordenador)
-      'home-mid': '',      // Display horizontal en la portada
-      'list-feed': '',     // In-feed dentro de los listados de guías
+      'below-hero': '',     // Display horizontal bajo la portada y bajo la cabecera de cada sección
+      'home-mid': '',       // Display horizontal en la portada, entre guías y herramientas
+      'list-feed': '',      // In-feed dentro de los listados de guías
+      'after-intro': '',    // In-article, después de la introducción de cada guía
+      'mid-article': '',    // In-article, a mitad de la guía
+      'before-faq': '',     // Display, antes de las preguntas frecuentes
+      'before-related': '', // Display, antes de "Sigue leyendo"
+      'sidebar': '',        // Display 300×250 en la barra lateral (solo ordenador)
     },
   },
 
